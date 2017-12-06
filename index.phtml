@@ -1,0 +1,30 @@
+<?php
+/**
+ * app-skeleton-3:/html/reference/index.phtml
+ *
+ * @creation  2017-09-10
+ * @version   1.0
+ * @package   app-skeleton
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+?>
+<style>
+#content p {
+	margin: 1em;
+}
+</style>
+<div id="content">
+	<h1>Reference of onepiece-framework</h1>
+	<?php
+	$route = Router::Get();
+	if( $args = ifset($route['args'], []) ){
+		$path = join('/', $args).'.phtml';
+		Template::Run($path);
+	}
+	?>
+</div>
+<hr/>
+<?php Template::Run('menu.phtml') ?>
+<hr/>
+<?php Template::Run('language.phtml') ?>
