@@ -1,0 +1,31 @@
+<?php
+/**
+ * app-skeleton-3:/html/reference/core.phtml
+ *
+ * @creation  2017-09-16
+ * @version   1.0
+ * @package   app-skeleton
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+?>
+<div data-i18n="true" data-lang="en">
+	<h1>feature</h1>
+	<ul>
+		<li>Encrypt from server side. (User can not be edited.)</li>
+		<li>Separated for each onepiece-framework application.</li>
+	</ul>
+	
+	<h2>How to use for Cookie class</h2>
+	<p>How to use is very easy.</p>
+	<div class="code">
+		<code>
+		&lt;php
+		//	Get method is get saved cookie value. 2nd arguments is default value.
+		$count = Cookie::Get('count', 0); 
+		
+		//	Set method is save to cookie value.
+		Cookie::Get('count', $count);
+		</code>
+	</div>
+</div>
