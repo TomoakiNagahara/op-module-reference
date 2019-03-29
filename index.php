@@ -9,3 +9,9 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 /* @var $app \OP\UNIT\App */
+
+//	...
+$app->Unit('WebPack')->Auto(__DIR__.'/index.css');
+
+//	...
+$app->Template('index.phtml');
