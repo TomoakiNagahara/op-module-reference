@@ -1,12 +1,31 @@
 <?php
 /**
- * app-skeleton-3:/html/reference/index.php
+ * unit-referencet:/index.php
  *
- * @creation  2017-09-10
+ * @creation  2018-10-30
  * @version   1.0
- * @package   app-skeleton
+ * @package   unit-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
 //	...
-Template::Run('index.phtml');
+$args = App::Args();
+
+//	...
+switch( $count = count($args) ){
+	case 0:
+	case 1:
+		include('menu.phtml');
+		break;
+
+	case 2:
+		include('index.phtml');
+		break;
+
+	case 3:
+		include('readme.php');
+		break;
+
+	default:
+		D($count, $args);
+};

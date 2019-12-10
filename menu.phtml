@@ -1,17 +1,62 @@
-<menu>
-	<ol>
-		<li><a href="/reference/introduction">Introduction</a></li>
-		<li><a href="/reference/core">Core</a></li>
-		<li><a href="/reference/app">App</a></li>
+<?php
+/**
+ * unit-referencet:/menu.phtml
+ *
+ * @creation  2018-10-30
+ * @version   1.0
+ * @package   unit-reference
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+//	...
+$endpoint  = App::EndPoint();
+$reference = basename(dirname($endpoint));
+
+//	...
+App::Breadcrumbs(['href'=>'app:/','text'=>'TOP']);
+
+//	...
+App::Breadcrumbs(['href'=>'app:/'.$reference,'text'=>'Reference']);
+
+//	...
+$args = [$reference];
+foreach( App::Args() as $arg ){
+	$args[] = $arg;
+	$list = [];
+	$list['text'] = ucfirst($arg);
+	$list['href'] = 'app:/'.join('/', $args);
+	App::Breadcrumbs($list);
+}
+?>
+<section id="menu-right" class="background border">
+	<ul>
+		<li><a href="<?= ConvertURL("app:/$reference/core") ?>">Core</a></li>
 		<li>
-			<a href="/reference/unit">Unit</a>
+			<a href="<?= ConvertURL("app:/$reference/unit") ?>">Unit</a>
 			<ul>
-				<li><a href="/reference/unit/newworld">NewWorld</a></li>
-				<li><a href="/reference/unit/db">Database</a></li>
-				<li><a href="/reference/unit/sql">SQL</a></li>
-				<li><a href="/reference/unit/form">Form</a></li>
-				<li><a href="/reference/unit/validate">Validate</a></li>
+			<?php
+			$root = ConvertURL("app:/");
+			foreach( glob('../unit/*') as $file ){
+				$name = basename($file);
+				printf('<li><a href="%s">%s</a></li>'.PHP_EOL, $root."$reference/unit/$name/", $name);
+			}
+			?>
 			</ul>
 		</li>
-	</ol>
-</menu>
+	</ul>
+</section>
+<style>
+#menu-right {
+	float: right;
+}
+
+#menu-right > ul {
+	padding: 0.5em 1.0em;
+}
+
+#menu-right ul {
+	margin:  0;
+	padding-left: 1.0em;
+	list-style-type: none;
+}
+</style>
