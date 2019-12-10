@@ -16,10 +16,12 @@
 namespace OP;
 
 /* @var $app UNIT\App */
-/* @var $api UNIT\Api */
 
 //	...
-$api = $app->Unit('Api');
+$json = [];
+$json['status'] = true;
+$json['errors'] = null;
+$json['result'] = null;
 
 //	...
 list($catg, $file) = explode('-', ($app->Request()['md'] ?? null) .'-' );
@@ -50,14 +52,20 @@ switch( $catg ){
 
 //	...
 if( empty($path) ){
-	$api->Set('markdown', "File path is empty.");
+	$markdown = "File path is empty.";
 }else if( 'md' !== ($ext = substr($path, strpos($path, '.')+1)) ){
-	$api->Set('markdown', "File extension has not match. ($ext)");
+	$markdown = "File extension has not match. ($ext)";
 }else if( file_exists($path) ){
-	$api->Set('markdown', file_get_contents($path));
+	$markdown = file_get_contents($path);
 }else{
-	$api->Set('markdown', "This readme file has not been exists. ({$catg}, {$file})");
+	$markdown = "This readme file has not been exists. ({$catg}, {$file})";
 };
 
 //	...
-$api->Out();
+$json['result']['markdown'] = $markdown;
+
+//	...
+Env::Mime('text/json');
+
+//	...
+echo json_encode($json);
