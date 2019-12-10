@@ -2,16 +2,36 @@
 /**
  * module-reference:/index.php
  *
- * @creation  2019-03-29
+ * @creation  2018-10-30
+ * @updation  2019-03-29
  * @version   1.0
  * @package   module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
+
+/** Namespace
+ *
+ */
+namespace OP;
+
 /* @var $app \OP\UNIT\App */
 
+/*
+//	Check if has slash of end of url.
+if( $_SERVER['DOCUMENT_ROOT'] === dirname($app->URL($app->Unit('Router')->EndPoint())) ){
+	$app->Unit('Http')->Location($_SERVER['REDIRECT_URL'].'/', 301);
+};
+*/
+
 //	...
-$app->Unit('WebPack')->Auto(__DIR__.'/index.css');
+$root_path = dirname( $app->Unit('Router')->EndPoint() );
+
+//	...
+RootPath('reference', $root_path);
 
 //	...
 $app->Template('index.phtml');
+
+//	...
+Unit::Load('i18n');

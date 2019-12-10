@@ -1,21 +1,38 @@
 <?php
 /**
- * module-reference:/index.phtml
+ * module-referencet:/index.phtml
  *
- * @creation  2019-03-29
+ * @creation  2018-11-01
  * @version   1.0
  * @package   module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-/* @var $app \OP\UNIT\App */
-?>
-<section class="reference">
-	<!-- left menu -->
-	<?= $app->Template('index-menu-left.phtml') ?>
 
-	<!-- main content -->
-	<section class="main">
-		<h1>The onepiece-framework reference book.</h1>
-	</section>
+/** Namespace
+ *
+ */
+namespace OP;
+
+/* @var $app \OP\UNIT\App */
+$src = Env::isLocalhost() ? ConvertURL('app:/vendor/marked/'):'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+
+//	...
+$app->Unit('WebPack')->Auto([
+	__DIR__.'/reference.css',
+//	__DIR__.'/reference.js',
+	__DIR__.'/menu-right.css',
+]);
+
+?>
+<section id="reference" class="reference">
+	<aside class="float right">
+		<?= $app->Template('menu-right.phtml') ?>
+	</aside>
+	<article class="">
+		<div id="markdown" class="markdown">Pleasd wait...</div>
+	</article>
 </section>
+<br style="clear:both;">
+<script src="<?= $src ?>"></script>
+<script src="<?= ConvertURL('reference:/reference.js?g11n=0') ?>"></script>

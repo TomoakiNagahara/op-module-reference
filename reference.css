@@ -1,0 +1,53 @@
+/**
+ * module-reference:/reference.css
+ *
+ * @creation  2019-04-03
+ * @version   1.0
+ * @package   module-reference
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+.reference {
+	border: 1px solid black;
+	padding: 1em;
+	font-size: 125%;
+}
+
+.reference .main {
+	border: 1px solid black;
+	width: 50%;
+}
+
+.reference h1 {
+	margin-top: 0;
+}
+
+.reference h2 {
+	/*
+	padding: 0.1em 0.5em;
+	border-top:    0.1em solid black;
+	border-bottom: 0.1em solid black;
+	*/
+}
+
+.markdown ol,
+.markdown ul {
+	margin-top:  1em;
+	margin-left: 1em;
+}
+
+.markdown p,
+.markdown li {
+	margin: 0.25em;
+}
+
+body.body .markdown code {
+	font-size: 90%;
+}
+
+/* Separate to inline code */
+body.body .markdown pre > code {
+	margin:        1em;
+	margin-right: 10em;
+}
