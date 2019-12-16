@@ -9,9 +9,9 @@
  */
 
 .reference {
-	border: 1px solid black;
+	_border: 1px solid black;
 	padding: 1em;
-	font-size: 125%;
+	_font-size: 125%;
 }
 
 .reference .main {
