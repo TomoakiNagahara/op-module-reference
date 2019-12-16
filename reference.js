@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 
 		//	...
-		$OP.i18n.Translate();
+		if( $OP && $OP.i18n && $OP.i18n.Translate ){
+			$OP.i18n.Translate();
+		}
 	};
 
 	//	...
