@@ -1,8 +1,8 @@
 <?php
 /**
- * module-referencet:/readme.php
+ * module-reference:/readme.php
  *
- * @creation  2018-11-01
+ * @created   2018-11-01
  * @version   1.0
  * @package   module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>

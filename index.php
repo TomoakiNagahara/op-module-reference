@@ -2,8 +2,8 @@
 /**
  * module-reference:/index.php
  *
- * @creation  2018-10-30
- * @updation  2019-03-29
+ * @created   2018-10-30
+ * @updated   2019-03-29
  * @version   1.0
  * @package   module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
