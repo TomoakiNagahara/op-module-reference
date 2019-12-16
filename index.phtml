@@ -15,12 +15,11 @@
 namespace OP;
 
 /* @var $app \OP\UNIT\App */
-$src = Env::isLocalhost() ? ConvertURL('app:/vendor/marked/'):'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+$marked = Env::isLocalhost() ? ConvertURL('reference:/marked/'):'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
 
 //	...
-$app->Unit('WebPack')->Auto([
+Unit::Singleton('WebPack')->Auto([
 	__DIR__.'/reference.css',
-//	__DIR__.'/reference.js',
 	__DIR__.'/menu-right.css',
 ]);
 
@@ -34,5 +33,5 @@ $app->Unit('WebPack')->Auto([
 	</article>
 </section>
 <br style="clear:both;">
-<script src="<?= $src ?>"></script>
-<script src="<?= ConvertURL('reference:/reference.js?g11n=0') ?>"></script>
+<script src="<?= $marked ?>"></script>
+<script src="<?= ConvertURL('reference:/reference.js') ?>"></script>
