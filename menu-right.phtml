@@ -20,7 +20,7 @@ namespace OP;
 		<li>
 			<span role="link" data-md="app">App</span>
 			<ol>
-				<? foreach( glob( ConvertPath('asset:/readme/*') ) as $md ): ?>
+				<? foreach( glob( ConvertPath('asset:/readme/*\.md') ) as $md ): ?>
 				<? $md = basename($md, '.md') ?>
 				<li role="link" data-md="app-<?= $md ?>"><?= $md ?></li>
 				<? endforeach; ?>
