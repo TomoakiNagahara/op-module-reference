@@ -33,7 +33,7 @@ switch( $catg ){
 		break;
 
 	case 'unit':
-		$path = ConvertPath("unit:/{$file}/README.md");
+		$path = ConvertPath("asset:/unit/{$file}/README.md");
 		break;
 
 	case 'javascript':
