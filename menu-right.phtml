@@ -20,16 +20,16 @@ namespace OP;
 		<li>
 			<span role="link" data-md="app">App</span>
 			<ol>
-				<? foreach( glob( ConvertPath('asset:/readme/*\.md') ) as $md ): ?>
-				<? $md = basename($md, '.md') ?>
+				<?php foreach( glob( RootPath('asset') . '/readme/*\.md' ) as $md ): ?>
+				<?php $md = basename($md, '.md') ?>
 				<li role="link" data-md="app-<?= $md ?>"><?= $md ?></li>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</ol>
 		</li>
 		<li>
 			<span role="link" data-md="core">Core</span>
 			<ol>
-				<?php foreach( glob( ConvertPath('op:/readme/*\.md') ) as $md ): ?>
+				<?php foreach( glob( RootPath('asset') . '/core/readme/*\.md' ) as $md ): ?>
 				<?php $md = basename($md, '.md') ?>
 				<li role="link" data-md="core-<?= $md ?>"><?= $md ?></li>
 				<?php endforeach; ?>
@@ -38,7 +38,7 @@ namespace OP;
 		<li>
 			Unit
 			<ol>
-				<?php foreach( glob( ConvertPath('asset:/unit/*') ) as $unit ): ?>
+				<?php foreach( glob( RootPath('asset') . '/unit/*' ) as $unit ): ?>
 				<?php $unit = basename($unit) ?>
 				<li role="link" data-md="unit-<?= $unit ?>"><?= $unit ?></li>
 				<?php endforeach; ?>
