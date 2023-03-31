@@ -22,6 +22,7 @@ $json = [];
 $json['status'] = true;
 $json['errors'] = null;
 $json['result'] = null;
+$json['timestamp'] = OP::Timestamp();
 
 //	...
 list($catg, $file) = explode('-', ($app->Request()['md'] ?? null) .'-' );
