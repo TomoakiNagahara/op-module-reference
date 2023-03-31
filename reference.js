@@ -8,7 +8,59 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 //	...
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', async function(){
+    //  ...
+    if( typeof marked === 'undefined' ){
+        console.log('marked is undefined');
+        return;
+    }
+    
+    console.log(marked);
+
+    //  ...
+    marked.setOptions({
+        gfm:         true,
+        tables:      true,
+        breaks:      false,
+        /*
+        pedantic:    false,
+        smartLists:  true,
+        smartypants: false,
+        sanitize:    true,
+        langPrefix: 'language-',
+        highlight:   function(code, lang) {
+            return   code;
+        }
+        */
+    });
+
+    //  ...
+    let url = '/reference/api/';
+
+    //  ...
+    fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            Markdown(json.result.markdown);
+        }
+    );
+
+    //  ...
+    function Markdown(markdown){
+        //  ...
+        let node = document.querySelector('#markdown');
+        let html = marked.parse(markdown);
+
+        //  Remove LF code.
+        while( html.search(/>\n/) !== -1 ){
+            html = html.replace(">\n",'>');
+        }
+        
+        //  ...
+        node.innerHTML = html;
+    }
+
+    /*
 	//	...
 	function fetch(md){
 		//	...
@@ -97,4 +149,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	//	...
 	fetch(md);
+    */
 });
