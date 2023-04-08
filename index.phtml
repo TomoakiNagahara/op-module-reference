@@ -19,14 +19,16 @@ $marked = Env::isLocalhost() ? ConvertURL('reference:/marked/'):'https://cdn.jsd
 
 //	...
 Unit('WebPack')->Auto([
-	__DIR__.'/reference.css',
+    __DIR__.'/reference.js',
+    __DIR__.'/reference.css',
+    __DIR__.'/menu-right.js',
 	__DIR__.'/menu-right.css',
 ]);
 
 ?>
 <section id="reference" class="reference">
 	<aside class="float right">
-		<?= Template('menu-right.phtml') ?>
+		<?= Template('menu-right2.phtml') ?>
 	</aside>
 	<article class="">
 		<div id="markdown" class="markdown">Please wait...</div>
@@ -34,4 +36,3 @@ Unit('WebPack')->Auto([
 </section>
 <br style="clear:both;">
 <script src="<?= $marked ?>"></script>
-<script src="<?= ConvertURL('reference:/reference.js') ?>"></script>

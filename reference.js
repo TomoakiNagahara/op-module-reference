@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', async function(){
         console.log('marked is undefined');
         return;
     }
-    
-    console.log(marked);
 
     //  ...
     marked.setOptions({
@@ -35,18 +33,15 @@ document.addEventListener('DOMContentLoaded', async function(){
     });
 
     //  ...
-    let url = '/reference/api/';
-
-    //  ...
-    fetch(url)
+    fetch('/reference/api/')
         .then(response => response.json())
         .then(json => {
-            Markdown(json.result.markdown);
+            $OP.Markdown(json.result.markdown);
         }
     );
 
     //  ...
-    function Markdown(markdown){
+    $OP.Markdown = function(markdown){
         //  ...
         let node = document.querySelector('#markdown');
         let html = marked.parse(markdown);

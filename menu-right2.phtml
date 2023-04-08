@@ -1,0 +1,55 @@
+<?php
+/** op-module-reference:/menu-right2.phtml
+ *
+ * @created    2023-03-31
+ * @version    2.0
+ * @package    op-module-reference
+ * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+/** Namespace
+ *
+ */
+namespace OP;
+
+?>
+<section id="menu-right" class="menu-right">
+    <ol>
+        <li>
+            <span data-open="false">App</span>
+            <ol>
+                <?php foreach( glob( RootPath('asset') . '/reference/*\.md' ) as $md ): ?>
+                <?php $md = basename($md, '.md') ?>
+                <li><?= $md ?></li>
+                <?php endforeach; ?>
+            </ol>
+        </li>
+        <li>
+            <span data-open="false">Core</span>
+            <ol>
+                <?php foreach( glob( RootPath('asset') . '/core/reference/*\.md' ) as $md ): ?>
+                <?php $md = basename($md, '.md') ?>
+                <li data-md="core-<?= $md ?>"><?= $md ?></li>
+                <?php endforeach; ?>
+            </ol>
+        </li>
+        <li>
+            <span data-open="false">Unit</span>
+            <ol>
+                <?php foreach( glob( RootPath('asset') . '/unit/*' ) as $unit ): ?>
+                <?php $unit = basename($unit) ?>
+                <li>
+                    <span data-open="false" data-md="unit-<?= $unit ?>"><?= $unit ?></span>
+                    <ol>
+                        <?php foreach( glob( RootPath('asset') . '/unit/' . $unit . '/reference/*.md' ) as $md ): ?>
+                            <?php $md = basename($md, '.md') ?>
+                            <li data-md="unit-<?= $unit ?>-<?= $md ?>"><?= $md ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                </li>
+                <?php endforeach; ?>
+            </ol>
+        </li>
+    </ol>
+</section>

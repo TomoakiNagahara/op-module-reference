@@ -24,3 +24,12 @@ section.menu-right ol {
 section.menu-right li {
 	margin-bottom: 0.2em;
 }
+
+section.menu-right [data-open],
+section.menu-right [data-md] {
+	cursor: pointer;
+}
+
+section.menu-right [data-open="false"] + ol {
+	display: none;
+}

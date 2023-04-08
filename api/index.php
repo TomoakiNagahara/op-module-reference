@@ -25,42 +25,55 @@ $json['result'] = null;
 $json['timestamp'] = OP::Timestamp();
 
 //	...
-list($catg, $file) = explode('-', ($app->Request()['md'] ?? null) .'-' );
+if( $arg  = OP::Request()['md'] ?? null ){
+    $args = explode('-', $arg);
+}
 
 //	...
-switch( $catg ){
-	case 'core':
-		$path = ConvertPath( ($file ? "op:/readme/{$file}.md":'op:/README.md') );
-		break;
+switch( $args[0] ?? 'app' ){
+    case 'app':
+        if(!$file = $args[1] ?? null ){
+            $path = 'app:/README.md';
+        }else{
+            $path = "asset:/reference/{$file}.md";
+        }
+        break;
 
-	case 'unit':
-		$path = ConvertPath("asset:/unit/{$file}/README.md");
-		break;
+    case 'core':
+        if(!$file = $args[1] ?? null ){
+            $path = 'core:/README.md';
+        }else{
+            $path = "asset:/core/reference/{$file}.md";
+        }
+        break;
 
-	case 'javascript':
-		$path = ConvertPath("app:/webpack/js/op/README.md");
+    case 'unit':
+        if(!$unit = $args[1] ?? null ){
+            $path = '';
+        }else if(!$file = $args[2] ?? null ){
+            $path = "asset:/unit/{$unit}/README.md";
+        }else{
+            $path = "asset:/unit/{$unit}/reference/{$file}.md";
+        }
 		break;
 
 	default:
-	case 'app':
-		if( $file ){
-			$path = ConvertPath("asset:/readme/{$file}.md");
-		}else{
-			$path = ConvertPath('app:/README.md');
-		};
-	break;
 };
 
 //	...
 if( empty($path) ){
-	$markdown = "File path is empty.";
-}else if( 'md' !== ($ext = substr($path, strpos($path, '.')+1)) ){
-	$markdown = "File extension has not match. ($ext)";
-}else if( file_exists($path) ){
-	$markdown = file_get_contents($path);
+    $markdown = "Does not correct argument. ({$arg})";
 }else{
-	$markdown = "This readme file has not been exists. ({$catg}, {$file})";
-};
+    //  ...
+    $path = OP::MetaPath($path);
+
+    //  ...
+    if( file_exists($path) ){
+        $markdown = file_get_contents($path);
+    }else{
+        $markdown = "Does not exists file. ({$path})";
+    };
+}
 
 //	...
 $json['result']['markdown'] = $markdown;
