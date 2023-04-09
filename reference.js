@@ -50,9 +50,14 @@ document.addEventListener('DOMContentLoaded', async function(){
         while( html.search(/>\n/) !== -1 ){
             html = html.replace(">\n",'>');
         }
-        
+
         //  ...
         node.innerHTML = html;
+
+        //  ...
+        node.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li').forEach(node => {
+            $OP.Translate.Popup(node);
+        });
     }
 
     /*

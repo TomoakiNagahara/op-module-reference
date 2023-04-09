@@ -21,7 +21,7 @@ namespace OP;
             <ol>
                 <?php foreach( glob( RootPath('asset') . '/reference/*\.md' ) as $md ): ?>
                 <?php $md = basename($md, '.md') ?>
-                <li><?= $md ?></li>
+                <li data-md="app-<?= $md ?>"><?= $md ?></li>
                 <?php endforeach; ?>
             </ol>
         </li>
