@@ -38,9 +38,12 @@ namespace OP;
             <span data-open="false">Unit</span>
             <ol>
                 <?php foreach( glob( RootPath('asset') . '/unit/*' ) as $unit ): ?>
-                <?php $unit = basename($unit) ?>
+                <?php
+                $unit = basename($unit);
+                $name = ucfirst($unit);
+                ?>
                 <li>
-                    <span data-open="false" data-md="unit-<?= $unit ?>"><?= $unit ?></span>
+                    <span data-open="false" data-md="unit-<?= $unit ?>"><?= $name ?></span>
                     <ol>
                         <?php foreach( glob( RootPath('asset') . '/unit/' . $unit . '/reference/*.md' ) as $md ): ?>
                             <?php $md = basename($md, '.md') ?>
