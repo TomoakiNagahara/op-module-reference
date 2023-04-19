@@ -17,6 +17,15 @@ namespace OP;
 <section id="menu-right" class="menu-right">
     <ol>
         <li>
+            <span data-open="false">Reference</span>
+            <ol>
+                <?php foreach( glob( RootPath('app') . '/reference/reference/*\.md' ) as $md ): ?>
+                <?php $md = basename($md, '.md') ?>
+                <li data-md="reference-<?= $md ?>"><?= $md ?></li>
+                <?php endforeach; ?>
+            </ol>
+        </li>
+        <li>
             <span data-open="false">App</span>
             <ol>
                 <?php foreach( glob( RootPath('asset') . '/reference/*\.md' ) as $md ): ?>
