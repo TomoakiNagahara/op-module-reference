@@ -31,6 +31,14 @@ if( $arg  = OP::Request()['md'] ?? null ){
 
 //	...
 switch( $args[0] ?? 'app' ){
+    case 'reference':
+        if(!$file = $args[1] ?? null ){
+            $path = 'app:/reference/README.md';
+        }else{
+            $path = "app:/reference/reference/{$file}.md";
+        }
+        break;
+
     case 'app':
         if(!$file = $args[1] ?? null ){
             $path = 'app:/README.md';
