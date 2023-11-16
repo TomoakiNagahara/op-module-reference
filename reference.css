@@ -23,6 +23,10 @@
 	margin-top: 0;
 }
 
+#reference h2 {
+    padding-left: 0;
+}
+
 /* Only 1st time p tag setting */
 body.body .markdown p:nth-of-type(1) {
 	margin-top:     1.0em;
