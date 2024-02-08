@@ -14,7 +14,7 @@
 namespace OP\MODULE\REFERENCE;
 
 /* @var $app \OP\UNIT\App */
-$marked = Env::isLocalhost() ? ConvertURL('reference:/marked/'):'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+$marked = OP()->Env()->isLocalhost() ? OP()->MetaPath('reference:/marked/',1):'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
 
 //	...
 Unit('WebPack')->Auto([
