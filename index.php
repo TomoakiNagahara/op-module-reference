@@ -12,7 +12,7 @@
 /** Namespace
  *
  */
-namespace OP;
+namespace OP\MODULE\REFERENCE;
 
 /* @var $app \OP\UNIT\App */
 
