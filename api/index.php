@@ -1,10 +1,9 @@
 <?php
-/**
- * module-reference:/api/index.php
+/** op-module-reference:/api/index.php
  *
  * @created   2019-03-29
  * @version   1.0
- * @package   module-reference
+ * @package   op-module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
