@@ -1,11 +1,10 @@
 <?php
-/**
- * module-reference:/index.php
+/** op-module-reference:/index.php
  *
  * @created   2018-10-30
  * @updated   2019-03-29
  * @version   1.0
- * @package   module-reference
+ * @package   op-module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
