@@ -14,8 +14,6 @@
  */
 namespace OP\MODULE\REFERENCE;
 
-/* @var $app \OP\UNIT\App */
-
 /*
 //	Check if has slash of end of url.
 if( $_SERVER['DOCUMENT_ROOT'] === dirname($app->URL($app->Unit('Router')->EndPoint())) ){
@@ -23,11 +21,14 @@ if( $_SERVER['DOCUMENT_ROOT'] === dirname($app->URL($app->Unit('Router')->EndPoi
 };
 */
 
-//	...
-$root_path = dirname( Unit('Router')->EndPoint() );
+//	Calc reference root.
+$root_path = dirname( OP()->Router()->EndPoint() );
+
+//	Register reference root.
+OP()->MetaPath()->Set('reference', $root_path);
 
 //	...
-RootPath('reference', $root_path);
+OP()->WebPack()->Auto('./webpack/');
 
 //	...
-Template('index.phtml');
+OP()->Template('index.phtml');
