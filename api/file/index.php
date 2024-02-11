@@ -21,13 +21,22 @@ namespace OP\MODULE\REFERENCE;
 //	...
 include('../common.php');
 
-//	...
-$request = OP()->Api()->Request();
-$path = $request['path'] ?? null;
-D($path);
+/* @var $api \OP\UNIT\Api */
+$api = OP()->Api();
 
 //	...
-OP()->Api()->Result('');
+$request = $api->Request();
 
 //	...
-OP()->Api()->Out();
+if(!$path = $request['path'] ?? null ){
+	$path = 'reference:/README.md';
+}
+
+//	...
+$content = file_get_contents( OP()->MetaPath($path) );
+
+//	...
+$api->Result( $content );
+
+//	...
+$api->Out();
