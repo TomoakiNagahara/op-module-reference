@@ -22,13 +22,12 @@ namespace OP\MODULE\REFERENCE;
 include('../common.php');
 
 //	...
-$path = OP()->Request('path');
+$request = OP()->Api()->Request();
+$path = $request['path'] ?? null;
+D($path);
 
 //	...
-$result = $path;
-
-//	...
-OP()->Api()->Result($result);
+OP()->Api()->Result('');
 
 //	...
 OP()->Api()->Out();
