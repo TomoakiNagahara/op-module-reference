@@ -17,3 +17,6 @@ declare(strict_types=1);
  *
  */
 namespace OP\MODULE\REFERENCE;
+
+//	...
+OP()->MetaPath()->Set('reference', dirname(__DIR__));
