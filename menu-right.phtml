@@ -1,10 +1,9 @@
 <?php
-/**
- * module-reference:/menu-right.phtml
+/** op-module-reference:/menu-right.phtml
  *
  * @created   2018-11-01
  * @version   1.0
- * @package   module-reference
+ * @package   op-module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
@@ -15,37 +14,10 @@
 namespace OP;
 
 ?>
-<section id="menu-right" class="menu-right" data-i18n="deny">
+<section id="menu-right" class="menu-right">
 	<ol>
-		<li>
-			<span role="link" data-md="app">App</span>
-			<ol>
-				<?php foreach( glob( RootPath('asset') . '/readme/*\.md' ) as $md ): ?>
-				<?php $md = basename($md, '.md') ?>
-				<li role="link" data-md="app-<?= $md ?>"><?= $md ?></li>
-				<?php endforeach; ?>
-			</ol>
-		</li>
-		<li>
-			<span role="link" data-md="core">Core</span>
-			<ol>
-				<?php foreach( glob( RootPath('asset') . '/core/readme/*\.md' ) as $md ): ?>
-				<?php $md = basename($md, '.md') ?>
-				<li role="link" data-md="core-<?= $md ?>"><?= $md ?></li>
-				<?php endforeach; ?>
-			</ol>
-		</li>
-		<li>
-			Unit
-			<ol>
-				<?php foreach( glob( RootPath('asset') . '/unit/*' ) as $unit ): ?>
-				<?php $unit = basename($unit) ?>
-				<li role="link" data-md="unit-<?= $unit ?>"><?= $unit ?></li>
-				<?php endforeach; ?>
-			</ol>
-		</li>
-		<li>
-			<span role="link" data-md="javascript">JavaScript</span>
-		</li>
+		<?php foreach( ['core','unit','layout','module'] as $key ): ?>
+			<li data-meta="true"><?= $key ?></li>
+		<?php endforeach; ?>
 	</ol>
 </section>
