@@ -20,18 +20,20 @@ if( typeof $OP.Reference === 'undefined' ){
 
 //	...
 if( typeof $OP.Reference.File === 'undefined' ){
-	$OP.Reference.File = async function($path){
+	$OP.Reference.File = async function(){
 		//	...
-		const URL      = "./api/file/" + '?path=' + $path;
+		const path     = window.location.pathname.replace('/reference/','');
+		const URL      = "/reference/api/file/" + '?path=' + path;
 		const response = await fetch(URL);
 		const json     = await response.json();
-
 		//	...
-		document.getElementById('markdown').innerHTML = marked.parse(json.result);
+		if( json.result ){
+			document.getElementById('markdown').innerHTML = marked.parse(json.result);
+		}
 	};
 }
 
 //	...
 document.addEventListener('DOMContentLoaded', function(){
-	$OP.Reference.File('');
+	$OP.Reference.File();
 });
