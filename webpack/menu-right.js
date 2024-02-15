@@ -142,9 +142,7 @@ if( typeof $OP.Reference.List.Click === 'undefined' ){
 
 //	...
 document.addEventListener('DOMContentLoaded', function(){
-	document.querySelectorAll('#menu-right li').forEach(function(li){
-		li.addEventListener('click', function(e){
-			$OP.Reference.List.Click( e.target );
-		}, true);
-	});
+	document.querySelector('#menu-right ol').addEventListener('click', function(e){
+		$OP.Reference.List.Click( e.target );
+	}, true);
 });
