@@ -23,7 +23,75 @@ if( typeof $OP.Reference.List === 'undefined' ){
 //	...
 if( typeof $OP.Reference.List.Click === 'undefined' ){
 	//	...
+	async function Path(elem){
+		//	...
+		var path = elem.getAttribute('data-path');
+		//	...
+		history.pushState(null, null, `/reference/${path}`);
+		//	...
+		if( elem.getAttribute('data-md') === "true" ){
+			path = '';
+		}
+		//	...
+		return path;
+	}
+
+	//	...
+	async function Json(path){
+		//	...
+		if( path === '' ){
+			return [];
+		}
+		//	...
+		const URL      = `/reference/api/list/?path=${path}`;
+		const response = await fetch(URL);
+		const json     = await response.json();
+		console.log(URL, json);
+		//	...
+		if( json.errors ){
+			console.error(json.errors);
+		}
+		//	...
+		return json.result ?? [];
+	}
+
+	//	...
+	async function List(elem, json){
+		//	...
+		if( json.length === 0 ){
+			return;
+		}
+		//	...
+		const path = elem.getAttribute('data-path');
+		const ol   = document.createElement('ol');
+		elem.appendChild(ol);
+		//	...
+		json.forEach(function(item){
+			//	...
+			var data_path = path + item.name + (item.dir ? '/':'');
+			var li = document.createElement('li');
+				li.innerText = item.name;
+				li.setAttribute('data-path', data_path);
+				li.setAttribute('data-md'  , item.md);
+				li.setAttribute('data-dir' , item.dir);
+			ol.appendChild(li);
+		});
+	};
+
+	//	...
 	$OP.Reference.List.Click = async function(elem){
+		//	...
+		const path = await Path(elem);
+		const json = await Json(path);
+					 await List(elem, json);
+		//	...
+		$OP.Reference.File();
+
+		//	...
+		if( 1 ){
+			return;
+		}
+
 		console.log(elem);
 		//	...
 		var ol = elem.querySelector('ol');
@@ -47,7 +115,7 @@ if( typeof $OP.Reference.List.Click === 'undefined' ){
 		//	...
 		const URL      = `/reference/api/list/?meta=${meta}&name=${name}`;
 		const response = await fetch(URL);
-		const json     = await response.json();
+		      json     = await response.json();
 		console.log(URL, json);
 		//	...
 		if( json.errors ){
