@@ -20,7 +20,7 @@ if( typeof $OP.Reference === 'undefined' ){
 
 //	...
 if( typeof $OP.Reference.File === 'undefined' ){
-	$OP.Reference.File = async function File($path){
+	$OP.Reference.File = async function($path){
 		//	...
 		const URL      = "./api/file/" + '?path=' + $path;
 		const response = await fetch(URL);
