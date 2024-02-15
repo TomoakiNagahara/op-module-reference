@@ -25,10 +25,10 @@ if( $_SERVER['DOCUMENT_ROOT'] === dirname($app->URL($app->Unit('Router')->EndPoi
 */
 
 //	...
-$root_path = dirname( Unit::Singleton('Router')->EndPoint() );
+$root_path = dirname( Unit('Router')->EndPoint() );
 
 //	...
 RootPath('reference', $root_path);
 
 //	...
-$app->Template('index.phtml');
+Template('index.phtml');
