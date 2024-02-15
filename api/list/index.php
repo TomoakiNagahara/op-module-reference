@@ -22,36 +22,46 @@ namespace OP\MODULE\REFERENCE;
 include('../common.php');
 
 //	...
-$request = OP()->Api()->Request();
-$meta = $request['meta'] ?? null;
-$name = $request['name'] ?? null;
-//$dir  = $request['dir'];
+$request = OP()->Request();
+$path = $request['path'] ?? null;
 
 //	...
-if(!$meta ){
-	OP()->Api()->Error("Empty meta.");
+if(!$path ){
+	//	...
+	OP()->Api()->Error("Empty path.");
 }else{
-	//	...
-	if( $meta === 'core' ){
-		$path = "{$meta}:/reference/*";
+	/* @var $match array */
+	if(!preg_match('|^([a-z]+):/(.*)|', $path, $match) ){
+		//	...
+		OP()->Api()->Error("Unmatch path. ($path)");
 	}else{
-		$path = $name ? "{$meta}:/{$name}/reference/*": "{$meta}:/*";
-	}
-	D($path);
+		//	...
+		$meta = $match[1];
+		$name = $match[2] ?? '';
 
-	//	...
-	if( $path = OP()->MetaPath($path) ){
-		foreach( glob($path) as $path ){
-			$name = basename($path);
-			list($name, $ext) = explode('.', $name);
-			$result[] = [
-				'dir'  => is_dir($path),
-				'name' => $name,
-				'md'   => ($ext === 'md') ? true: false,
-			];
+		//	...
+		if( $meta === 'core' ){
+			$path = $name ? "{$meta}:/reference/{$name}/*": "{$meta}:/reference/*";
+		}else{
+			$path = $name ? "{$meta}:/{$name}/reference/*": "{$meta}:/*";
+		}
+
+		//	...
+		if(!$path = OP()->MetaPath($path) ){
+			//	...
+			OP()->Api()->Error("Can not convert this path. ($path)");
+		}else{
+			foreach( glob($path) as $path ){
+				$name = basename($path);
+				list($name, $ext) = explode('.', $name.'.');
+				$result[] = [
+					'dir'  => is_dir($path),
+					'name' => $name,
+					'md'   => ($ext === 'md') ? true: false,
+				];
+			}
 		}
 	}
-	D($path);
 }
 
 //	...
