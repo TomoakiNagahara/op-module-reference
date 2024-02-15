@@ -25,6 +25,8 @@ section.menu-right ol {
 }
 
 section.menu-right li {
+	margin-bottom: 0.2em;
+	cursor: pointer;
 	_border: 1px solid black;
 	margin:  0.1em 0;
 	padding: 0;
