@@ -1,9 +1,8 @@
-/**
- * module-reference:/reference.js
+/** op-module-reference:/reference.js
  *
  * @created   2019-04-03
  * @version   1.0
- * @package   module-reference
+ * @package   op-module-reference
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
